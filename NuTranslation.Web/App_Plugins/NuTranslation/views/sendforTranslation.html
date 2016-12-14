@@ -1,0 +1,77 @@
+﻿<div ng-controller="nutranslation.sendToTranslationController as vm">
+    <div class="umb-dialog-body form-horizontal">
+        <umb-pane>
+            <p>Choose to which languages to translate <b>{{currentNode.name}}</b></p>
+
+
+            <div class="umb-loader-wrapper" ng-show="vm.busy">
+                <div class="umb-loader"></div>
+            </div>
+
+            <div class="alert alert-error" ng-show="vm.error">
+                <h4>{{vm.error.errorMsg}}</h4>
+                <p>{{vm.error.data.Message}}</p>
+            </div>
+
+            <div class="alert alert-success" ng-show="vm.success">
+                <p>
+                    <strong>{{currentNode.name}}</strong> was sent to translation for:
+                    <ul>
+                        <li ng-repeat="item in vm.translationRequests">{{item}}</li>
+                    </ul>
+                </p>
+
+                <button class="btn btn-primary" ng-click="nav.hideDialog()">Ok</button>
+            </div>
+            
+
+
+            <div class="control-group umb-control-group">
+                <div class="umb-el-wrap">
+                    <label class="control-label" for="sourceLanguage">Source Language</label>
+                    <div class="controls controls-row">
+                        <select id="sourceLanguage" ng-model="vm.langFrom" ng-change="vm.setSource(vm.langFrom)" class="form-control">
+                            <option value="">Choose Source...</option>
+                            <option ng-repeat="lang in vm.languages" value="{{lang.isoCode}}">{{lang.name}} ({{lang.nativeName}})</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group umb-control-group">
+                <div class="umb-el-wrap">
+                    <label class="control-label">Target Languages</label>
+                    <div class="controls controls-row">
+                        <div class="control">
+                            <label><input type="checkbox" ng-model="vm.selectedAll" ng-click="vm.toggleAll()"> Check/Uncheck all</label>
+                        </div>
+                        <div class="control" ng-repeat="lang in vm.languages" ng-class="{disabled: lang.disabled}">
+                            <label><input type="checkbox" name="selectedLang[]" value="{{lang.isoCode}}" ng-model="lang.selected" ng-disabled="lang.disabled"> {{lang.name}} ({{lang.nativeName}})</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group umb-control-group">
+                <div class="umb-el-wrap">
+                    <label class="control-label" for="comment">Comment</label>
+                    <div class="controls controls-row">
+                        <textarea id="comment" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+
+        </umb-pane>
+    </div>
+
+
+    <div class="umb-dialog-footer btn-toolbar umb-btn-toolbar" ng-hide="vm.success">
+        <a class="btn btn-link" ng-click="nav.hideDialog()" ng-if="!vm.busy">
+            <localize key="general_cancel">Cancel</localize>
+        </a>
+
+        <button class="btn btn-primary" ng-click="vm.sentToTranslation()" ng-disabled="vm.busy">
+            <localize key="actions_translate">Translate</localize>
+        </button>
+    </div>
+</div>

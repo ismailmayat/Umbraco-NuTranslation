@@ -1,0 +1,9 @@
+﻿{
+    "javascript": [
+        "~/App_Plugins/NuTranslation/js/sendforTranslation.controller.js",
+        "~/App_Plugins/NuTranslation/js/translationHistory.controller.js"
+    ],
+    "css": [
+        "~/App_Plugins/NuTranslation/css/flags.css"
+    ]
+}
