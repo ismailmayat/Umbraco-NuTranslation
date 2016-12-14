@@ -9,7 +9,7 @@ using NuTranslation.Models;
 using Umbraco.Core.Models;
 using Umbraco.Web.Editors;
 using Umbraco.Web.WebApi;
-using Language = NuTranslation.Core.Models.Language;
+using Language = NuTranslation.Models.Language;
 
 namespace NuTranslation.Controllers
 {

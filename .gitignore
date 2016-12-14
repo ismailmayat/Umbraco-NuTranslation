@@ -244,8 +244,7 @@ ModelManifest.xml
 **/App_Data/
 NuTranslation.Web/Umbraco/
 NuTranslation.Web/Umbraco_Client/
-NuTranslation.Web/Global.asax
-NuTranslation.Web/default.aspx
 NuTranslation.Web/Views/*
 NuTranslation.Web/App_Plugins/*
+NuTranslation.Web/App_Browsers/*
 !NuTranslation.Web/App_Plugins/NuTranslation
